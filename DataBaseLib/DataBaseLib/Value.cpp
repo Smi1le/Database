@@ -3,7 +3,7 @@
 
 
 
-CValue::CValue(std::string const & value, std::string const & type)
+CValue::CValue(std::string const & value, std::string const & type = "norm")
 	: m_value(value)
 	, m_type(type)
 {
