@@ -3,14 +3,14 @@
 #include <vector>
 #include <map>
 #include "Note.h"
-
-struct SColumn
+//¬озможно эта структура излишн€€
+/*struct SColumn
 {
-	size_t id;
+	size_t id; //«ачем у каждой колонки хранить id?
 	std::string m_type; // TODO: заменить на Enum
 };
-
-using ColumnsNames = std::map<std::string, SColumn>;
+*/
+//using ColumnsNames = std::map<std::string, SColumn>;
 
 class CDataTable
 {
@@ -19,11 +19,12 @@ public:
 	void RemoveNote();
 	void RemoveColumn(std::string const & columnName);
 	void Update();
-	void AddNote();
+	void AddNote(CNote const &note);
 	CNote GetNote(size_t row) const;
 private:
 	std::string m_name;
 	std::vector<CNote> m_table;
-	ColumnsNames m_columnNames;
+	//с этими данными не работаю
+	//ColumnsNames m_columnNames;
 };
 
