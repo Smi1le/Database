@@ -2,15 +2,18 @@
 //
 
 #include "stdafx.h"
-#include "DataTable.h"
-#include "Parser.h"
-
+#include "DataBaseLib.h"
 
 int main()
 {
-	CDataTable dataTable;
-	CParser parser;
-	parser.Parse("example.txt");
+	try
+	{	
+		CDataBaseLib db;
+	}
+	catch (const std::exception& error)
+	{
+		std::cerr << error.what() << std::endl;
+	}
     return 0;
 }
 

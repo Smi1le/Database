@@ -29,8 +29,16 @@ void CDataTable::RemoveColumn(std::string const & columnName)
 	}
 }
 
-void CDataTable::Update()
+void CDataTable::RenameColumn(std::string const & columnName, std::string const & newColumnName)
 {
+	if (m_columnNames.find(newColumnName) != m_columnNames.end())
+	{
+		std::cout << "This name exist" << std::endl;
+		return;
+	}
+	auto column = m_columnNames.at(columnName);
+	m_columnNames.erase(columnName);
+	m_columnNames.insert(std::pair<std::string, SColumn>(newColumnName, column));
 }
 
 void CDataTable::AddNote(CNote const &note)
@@ -38,16 +46,32 @@ void CDataTable::AddNote(CNote const &note)
 	m_table.push_back(note);
 }
 
+void CDataTable::AddEmptyColumn(std::string const & columnName, std::string const & type)
+{
+	if (m_columnNames.find(columnName) != m_columnNames.end())
+	{
+		return;
+	}
+	auto position = columnName.size();
+	m_columnNames.insert(std::pair <std::string, SColumn>(columnName, SColumn(position, type)));
+
+	for (auto & note : m_table)
+	{
+		note.AddColumn(position, CValue());
+	}
+}
+
 CNote CDataTable::GetNote(size_t row) const
 {
 	return m_table.at(row);
 }
 
-void CDataTable::SetName()
+void CDataTable::SetName(std::string const & name)
 {
+	m_name = name;
 }
 
 std::string CDataTable::GetName() const
 {
-	return std::string();
+	return m_name;
 }

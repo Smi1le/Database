@@ -5,18 +5,19 @@
 #include "Parser.h"
 
 
-class DataBaseLib
+class CDataBaseLib
 {
 public:
-	DataBaseLib();
+	CDataBaseLib() = default;
 	void LoadTableFromFile(std::string const & path);
-	void LoadTableFromFiles(std::vector<std::string> const & paths);
+	void LoadTablesFromFiles(std::vector<std::string> const & paths);
 
 	void DeleteTable(std::string const & tableName);
 	void AddTable(std::string const & tableName, std::vector<Column> const & columns);
 	CDataTable GetTable(std::string const & tableName) const;
+
+	void RenameTable(std::string const & tableName, std::string const & newTableName);
 private:
 	std::map<std::string, CDataTable> m_tables;
-	CParser m_parser;
 };
 

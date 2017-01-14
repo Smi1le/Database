@@ -2,17 +2,12 @@
 #include "DataBaseLib.h"
 
 
-DataBaseLib::DataBaseLib()
+void CDataBaseLib::LoadTableFromFile(std::string const & data)
 {
+	CParser parser;
 }
 
-void DataBaseLib::LoadTableFromFile(std::string const & data)
-{
-	auto table = m_parser.Parse(data);
-	m_tables.insert(std::pair<std::string, CDataTable>(table.GetName(), table));
-}
-
-void DataBaseLib::LoadTablesFromFiles(std::vector<std::string> const & paths)
+void CDataBaseLib::LoadTablesFromFiles(std::vector<std::string> const & paths)
 {
 	for (auto const & path : paths)
 	{
@@ -20,13 +15,13 @@ void DataBaseLib::LoadTablesFromFiles(std::vector<std::string> const & paths)
 	}
 }
 
-void DataBaseLib::DeleteTable(std::string const & tableName)
+void CDataBaseLib::DeleteTable(std::string const & tableName)
 {
 	auto success = m_tables.erase(tableName);
 	success > 0 ? std::cout << "Table removed" << std::endl : std::cout << "Table not exist: " + tableName << std::endl;
 }
 
-void DataBaseLib::AddTable(std::string const & tableName, std::vector<Column> const & columns)
+void CDataBaseLib::AddTable(std::string const & tableName, std::vector<Column> const & columns)
 {
 	ColumnsNames columNames;
 	for (size_t index = 0; index < columns.size(); ++index)
@@ -38,8 +33,21 @@ void DataBaseLib::AddTable(std::string const & tableName, std::vector<Column> co
 	CDataTable table(tableName, columNames);
 }
 
-CDataTable DataBaseLib::GetTable(std::string const & tableName) const
+CDataTable CDataBaseLib::GetTable(std::string const & tableName) const
 {
 	return m_tables.at(tableName);
+}
+
+void CDataBaseLib::RenameTable(std::string const & tableName, std::string const & newTableName)
+{
+	if (m_tables.find(newTableName) != m_tables.end())
+	{
+		std::cout << "This name exist" << std::endl;
+		return;
+	}
+	auto table = m_tables.at(tableName);
+	table.SetName(newTableName);
+	m_tables.erase(tableName);
+	m_tables.insert(std::pair<std::string, CDataTable>(newTableName, table));
 }
 
