@@ -9,10 +9,11 @@ class DataBaseLib
 {
 public:
 	DataBaseLib();
-	void LoadTableFromFile(std::string const & data);
+	void LoadTableFromFile(std::string const & path);
 	void LoadTableFromFiles(std::vector<std::string> const & paths);
+
 	void DeleteTable(std::string const & tableName);
-	void AddTable();
+	void AddTable(std::string const & tableName, std::vector<Column> const & columns);
 	CDataTable GetTable(std::string const & tableName) const;
 private:
 	std::map<std::string, CDataTable> m_tables;

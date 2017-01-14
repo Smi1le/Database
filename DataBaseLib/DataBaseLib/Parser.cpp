@@ -16,7 +16,7 @@ namespace
 {
 	std::pair<std::string, CDataTable> ConvertToNormForm(Table const &table, std::string const &tableName)
 	{
-		CDataTable newTable;
+		CDataTable newTable(tableName, );
 		
 		for (size_t i = 1; i != table.size(); ++i)
 		{

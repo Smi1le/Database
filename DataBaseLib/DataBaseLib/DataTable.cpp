@@ -2,6 +2,12 @@
 #include "DataTable.h"
 
 
+CDataTable::CDataTable(std::string const & name, ColumnsNames const & columns)
+	: m_name(name)
+	, m_columnNames(columns)
+{
+}
+
 void CDataTable::RemoveNote(size_t row)
 {
 	if (m_table.size() < row)
@@ -35,4 +41,13 @@ void CDataTable::AddNote(CNote const &note)
 CNote CDataTable::GetNote(size_t row) const
 {
 	return m_table.at(row);
+}
+
+void CDataTable::SetName()
+{
+}
+
+std::string CDataTable::GetName() const
+{
+	return std::string();
 }
