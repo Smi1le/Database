@@ -1,11 +1,6 @@
 #include "stdafx.h"
 #include "DataBaseLib.h"
 
-
-CDataBaseLib::CDataBaseLib()
-{
-}
-
 void CDataBaseLib::LoadTableFromFile(std::string const & data)
 {
 	auto table = m_parser.Parse(data);

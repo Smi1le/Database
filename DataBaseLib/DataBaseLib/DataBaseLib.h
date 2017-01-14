@@ -8,7 +8,7 @@
 class CDataBaseLib
 {
 public:
-	CDataBaseLib();
+	CDataBaseLib() = default;
 	void LoadTableFromFile(std::string const & path);
 	void LoadTablesFromFiles(std::vector<std::string> const & paths);
 
