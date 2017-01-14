@@ -28,7 +28,6 @@ void CNote::Show()
 	{
 		std::cout << el.first << " : " << el.second.GetValue() << std::endl;
 	}
-	std::cout << "\t";
 }
 
 CValue CNote::GetColumnValue(size_t column) const
