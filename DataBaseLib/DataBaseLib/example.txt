@@ -1,4 +1,4 @@
-My_first_table
+My_table
 id_note:computer:comput:password:login
 string:string:string:string:string
 1:asus:Vasya:qwerty123:Vasya_ya

@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы ресурсов\commands">
+      <UniqueIdentifier>{f15ffa7d-1c95-45eb-872d-bb88aff414e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\commands\abstract">
+      <UniqueIdentifier>{0e8c9748-c4cd-413b-91bf-c950eaeb1719}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -39,6 +45,30 @@
     <ClInclude Include="Parser.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadTablesCommand.h">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="RemoveTableCommand.h">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractCommand.h">
+      <Filter>Файлы ресурсов\commands\abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractMetaCommand.h">
+      <Filter>Файлы ресурсов\commands\abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="RenameTableCommand.h">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -61,6 +91,24 @@
     </ClCompile>
     <ClCompile Include="Parser.cpp">
       <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadTablesCommand.cpp">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="RemoveTableCommand.cpp">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractCommand.cpp">
+      <Filter>Файлы ресурсов\commands\abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractMetaCommand.cpp">
+      <Filter>Файлы ресурсов\commands\abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="RenameTableCommand.cpp">
+      <Filter>Файлы ресурсов\commands</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
