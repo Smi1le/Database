@@ -2,9 +2,12 @@
 #include "DataBaseLib.h"
 
 
+
 void CDataBaseLib::LoadTableFromFile(std::string const & data)
 {
 	CParser parser;
+	auto table = parser.Parse(data);
+	m_tables.insert(std::pair<std::string, CDataTable>(table.GetName(), table));
 }
 
 void CDataBaseLib::LoadTablesFromFiles(std::vector<std::string> const & paths)
@@ -50,4 +53,3 @@ void CDataBaseLib::RenameTable(std::string const & tableName, std::string const 
 	m_tables.erase(tableName);
 	m_tables.insert(std::pair<std::string, CDataTable>(newTableName, table));
 }
-

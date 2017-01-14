@@ -9,6 +9,7 @@ int main()
 	try
 	{	
 		CDataBaseLib db;
+		db.LoadTableFromFile("example.txt");
 	}
 	catch (const std::exception& error)
 	{

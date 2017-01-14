@@ -8,12 +8,12 @@
 class CParser // нужно переделать парсер по одному файлу
 {
 public:
-	std::map<std::string, CDataTable> Parse(std::string const &fileName);
+	CDataTable Parse(std::string const &fileName);
 	
 
 
 private:
 	std::vector<std::string> GetContentsFile(std::string const &fileName);
-	std::pair<std::string, CDataTable> GetNewDataTable(std::vector<std::string> const &tableInfo);
+	CDataTable GetNewDataTable(std::vector<std::string> const &tableInfo);
 
 };

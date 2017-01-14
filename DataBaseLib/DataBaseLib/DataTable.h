@@ -4,7 +4,6 @@
 #include <map>
 #include "Note.h"
 
-
 struct SColumn
 {
 	size_t id;
@@ -22,10 +21,12 @@ using Column = std::pair<std::string, std::string>;
 class CDataTable
 {
 public:
-	CDataTable(std::string const & name, ColumnsNames const & columns);
+	CDataTable(std::string const & name, ColumnsNames const & columns = ColumnsNames());
 	void AddNote(CNote const &note);
 	void RemoveNote(size_t row);
 	CNote GetNote(size_t row) const;
+	
+	void AddColumnsNames(std::vector<Column> const &columns);
 
 	void AddEmptyColumn(std::string const & columnName, std::string const & type);
 	void RemoveColumn(std::string const & columnName);
@@ -33,10 +34,10 @@ public:
 
 	void SetName(std::string const & name);
 	std::string GetName() const;
+	void Show();
 private:
 	std::string m_name;
 	std::vector<CNote> m_table;
-	
 	ColumnsNames m_columnNames;
 };
 
