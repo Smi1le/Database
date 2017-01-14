@@ -5,14 +5,13 @@ class CValue
 {
 public:
 	CValue() = default;
-	CValue(std::string const & value, std::string const & type);
+	CValue(std::string const & value);
 	void ReplaceValue(std::string const & value);
 	void RemoveValue();
 	std::string GetValue() const;
 
-	std::string GetType() const;
 private:
 	std::string m_value;
-	std::string m_type; // TODO: возможно не нужен будет
+	
 };
 

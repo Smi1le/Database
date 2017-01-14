@@ -1,17 +1,10 @@
 #include "stdafx.h"
 #include "Note.h"
 
-CNote::CNote(std::vector<std::string> const & columnsName)
-{
-	for (auto const &el : columnsName)
-	{
-		m_note.insert(std::pair<std::string, CValue>(el, CValue()));
-	}
-}
 
-void CNote::AddColumn()
+void CNote::AddColumn(size_t idColumn, CValue const & value)
 {
-	// TODO: create method
+	m_note.insert(std::pair<size_t, CValue>(idColumn, value));
 }
 
 void CNote::RemoveNote()
@@ -19,14 +12,14 @@ void CNote::RemoveNote()
 	m_note.clear();
 }
 
-void CNote::RemoveColumn(std::string const & columnName)
+void CNote::RemoveColumn(size_t columnId)
 {
-	m_note.erase(columnName);
+	m_note.erase(columnId);
 }
 
-void CNote::UpdateNote(std::string const & columnName, std::string const & value)
+void CNote::UpdateNote(size_t column, std::string const & value)
 {
-	m_note.at(columnName).ReplaceValue(value);
+	m_note.at(column).ReplaceValue(value);
 }
 
 void CNote::Show()
@@ -35,10 +28,10 @@ void CNote::Show()
 	{
 		std::cout << el.first << " : " << el.second.GetValue() << std::endl;
 	}
-	std::cout << "\n\n\n\n";
+	std::cout << "\t";
 }
 
-CValue CNote::GetColumnValue(std::string const & columnName) const
+CValue CNote::GetColumnValue(size_t column) const
 {
-	return m_note.at(columnName);
+	return m_note.at(column);
 }

@@ -3,9 +3,8 @@
 
 
 
-CValue::CValue(std::string const & value, std::string const & type = "norm")
+CValue::CValue(std::string const & value)
 	: m_value(value)
-	, m_type(type)
 {
 }
 
@@ -22,9 +21,4 @@ void CValue::RemoveValue()
 std::string CValue::GetValue() const
 {
 	return m_value;
-}
-
-std::string CValue::GetType() const
-{
-	return m_type;
 }

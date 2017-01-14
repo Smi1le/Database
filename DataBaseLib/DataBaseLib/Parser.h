@@ -5,7 +5,7 @@
 
 
 
-class CParser
+class CParser // нужно переделать парсер по одному файлу
 {
 public:
 	std::map<std::string, CDataTable> Parse(std::string const &fileName);

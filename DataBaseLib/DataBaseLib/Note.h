@@ -6,16 +6,16 @@
 class CNote
 {
 public:
-	CNote(std::vector<std::string> const &columnsName);
+	CNote() = default;
 
-	void AddColumn();
+	void AddColumn(size_t idColumn, CValue const & value);
 	void RemoveNote();
-	void RemoveColumn(std::string const & columnName);
-	void UpdateNote(std::string const & columnName, std::string const &value);
+	void RemoveColumn(size_t columnId);
+	void UpdateNote(size_t column, std::string const &value);
 	void Show();
-	CValue GetColumnValue(std::string const & columnName) const;
+	CValue GetColumnValue(size_t column) const;
 private:
 	// id column and value
-	std::map<std::string, CValue> m_note;
+	std::map<size_t, CValue> m_note;
 };
 

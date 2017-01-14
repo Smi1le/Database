@@ -21,12 +21,12 @@ namespace
 		for (size_t i = 1; i != table.size(); ++i)
 		{
 			
-			CNote newNote = CNote(table[0]);
+			CNote newNote = CNote();
 			for (size_t j = 0; j != table[i].size(); ++j)
 			{
 				auto columnName = table[0][j];
 				auto value = table[i][j];
-				newNote.UpdateNote(columnName, value);
+				newNote.AddColumn(j, value);
 
 			}
 			newTable.AddNote(newNote);

@@ -2,17 +2,25 @@
 #include "DataTable.h"
 
 
-void CDataTable::RemoveNote()
+void CDataTable::RemoveNote(size_t row)
 {
+	if (m_table.size() < row)
+	{
+		//TODO: exception
+		return;
+	}
+	auto position = m_table.begin() + row;
+	m_table.erase(position, position + 1);
 }
 
 void CDataTable::RemoveColumn(std::string const & columnName)
 {
-	/*auto columnIndex = m_columnNames.at(columnName);
+	auto column = m_columnNames.at(columnName);
+	
 	for (auto & row : m_table)
 	{
-		row.RemoveColumn(columnIndex.id);
-	}*/
+		row.RemoveColumn(column.id);
+	}
 }
 
 void CDataTable::Update()
