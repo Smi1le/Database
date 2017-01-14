@@ -15,8 +15,9 @@ public:
 	void DeleteTable(std::string const & tableName);
 	void AddTable(std::string const & tableName, std::vector<Column> const & columns);
 	CDataTable GetTable(std::string const & tableName) const;
+
+	void RenameTable(std::string const & tableName, std::string const & newTableName);
 private:
 	std::map<std::string, CDataTable> m_tables;
-	CParser m_parser;
 };
 

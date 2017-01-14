@@ -3,16 +3,18 @@
 
 #include "stdafx.h"
 #include "DataBaseLib.h"
-#include "Parser.h"
-
 
 int main()
 {
-	//CDataTable dataTable;
-	CDataBaseLib lib;
-	lib.LoadTableFromFile("example.txt");
-	//CParser parser;
-	//parser.Parse("example.txt");
+	try
+	{	
+		CDataBaseLib db;
+		db.LoadTableFromFile("example.txt");
+	}
+	catch (const std::exception& error)
+	{
+		std::cerr << error.what() << std::endl;
+	}
     return 0;
 }
 

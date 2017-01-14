@@ -14,6 +14,7 @@ struct SColumn
 	{}
 };
 
+
 using ColumnsNames = std::map<std::string, SColumn>;
 using Column = std::pair<std::string, std::string>;
 
@@ -21,15 +22,18 @@ class CDataTable
 {
 public:
 	CDataTable(std::string const & name, ColumnsNames const & columns = ColumnsNames());
-	void RemoveNote(size_t row);
-	void RemoveColumn(std::string const & columnName);
-	void Update();
 	void AddNote(CNote const &note);
+	void RemoveNote(size_t row);
 	CNote GetNote(size_t row) const;
-	std::string GetName() const;
-	void SetName(std::string const &name);
+	
 	void AddColumnsNames(std::vector<Column> const &columns);
 
+	void AddEmptyColumn(std::string const & columnName, std::string const & type);
+	void RemoveColumn(std::string const & columnName);
+	void RenameColumn(std::string const & columnName, std::string const & newColumnName);
+
+	void SetName(std::string const & name);
+	std::string GetName() const;
 	void Show();
 private:
 	std::string m_name;
