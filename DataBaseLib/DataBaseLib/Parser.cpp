@@ -66,7 +66,6 @@ std::vector<string> CParser::GetContentsFile(std::string const & fileName)
 	
 	if (!inputFile.is_open())
 	{
-		std::cout << "File not found" << std::endl;
 		throw std::invalid_argument("File not found");
 	}
 

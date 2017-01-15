@@ -21,7 +21,7 @@ void CDataBaseLib::LoadTablesFromFiles(std::vector<std::string> const & paths)
 void CDataBaseLib::DeleteTable(std::string const & tableName)
 {
 	auto success = m_tables.erase(tableName);
-	success > 0 ? std::cout << "Table removed" << std::endl : std::cout << "Table not exist: " + tableName << std::endl;
+	std::cout << "Table removed" << std::endl;
 }
 
 void CDataBaseLib::AddTable(std::string const & tableName, std::vector<Column> const & columns)
