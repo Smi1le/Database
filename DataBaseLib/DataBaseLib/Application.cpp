@@ -6,7 +6,8 @@
 #include "LoadTablesCommand.h"
 #include "RemoveTableCommand.h"
 #include "RenameTableCommand.h"
-
+#include "CreateTableCommand.h" 
+#include "ShowTableCommand.h" 
 
 
 CApplication::CApplication()
@@ -21,6 +22,10 @@ void CApplication::Run()
 	while ((std::cout << ">")
 		&& getline(std::cin, command))
 	{
+		if (command == "exit")
+		{
+			break;
+		}
 		try
 		{
 			ExecuteCommand(command);
@@ -48,7 +53,9 @@ void CApplication::ExecuteCommand(const std::string & command)
 
 void CApplication::InitCommand()
 {
-	m_commands.emplace_back("loadTable", std::make_unique<CLoadTablesCommand>(m_lib));
+	m_commands.emplace_back("load", std::make_unique<CLoadTablesCommand>(m_lib));
 	m_commands.emplace_back("remove", std::make_unique<CRemoveTableCommand>(m_lib));
 	m_commands.emplace_back("rename", std::make_unique<CRenameTableCommand>(m_lib));
+	m_commands.emplace_back("create", std::make_unique<CCreateTableCommand>(m_lib));
+	m_commands.emplace_back("show", std::make_unique<CShowTableCommand>(m_lib));
 }

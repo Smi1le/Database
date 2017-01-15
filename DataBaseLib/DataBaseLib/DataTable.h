@@ -21,6 +21,7 @@ using Column = std::pair<std::string, std::string>;
 class CDataTable
 {
 public:
+	CDataTable() = default;
 	CDataTable(std::string const & name, ColumnsNames const & columns = ColumnsNames());
 	void AddNote(CNote const &note);
 	void RemoveNote(size_t row);
@@ -34,7 +35,9 @@ public:
 
 	void SetName(std::string const & name);
 	std::string GetName() const;
-	void Show();
+
+	size_t GetNotesCount() const;
+	size_t GetColumnCount() const;
 private:
 	std::string m_name;
 	std::vector<CNote> m_table;

@@ -9,5 +9,6 @@ public:
 
 protected:
 	void DoExecute(std::string const & inputStr) override;
+	void Run() override {};
 };
 

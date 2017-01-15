@@ -11,6 +11,6 @@ void CRenameTableCommand::DoExecute(std::string const & inputStr)
 {	
 	std::cout << "-> input new table name: ";
 	std::string newName;
-	std::cin >> newName;
+	getline(std::cin, newName);
 	m_lib.RenameTable(inputStr, newName);
 }

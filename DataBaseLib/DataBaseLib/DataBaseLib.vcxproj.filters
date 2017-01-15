@@ -57,9 +57,6 @@
     <ClInclude Include="RemoveTableCommand.h">
       <Filter>Файлы ресурсов\commands</Filter>
     </ClInclude>
-    <ClInclude Include="ICommand.h">
-      <Filter>Файлы ресурсов\commands</Filter>
-    </ClInclude>
     <ClInclude Include="AbstractCommand.h">
       <Filter>Файлы ресурсов\commands\abstract</Filter>
     </ClInclude>
@@ -67,6 +64,15 @@
       <Filter>Файлы ресурсов\commands\abstract</Filter>
     </ClInclude>
     <ClInclude Include="RenameTableCommand.h">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateTableCommand.h">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>Файлы ресурсов\commands\abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="ShowTableCommand.h">
       <Filter>Файлы ресурсов\commands</Filter>
     </ClInclude>
   </ItemGroup>
@@ -108,6 +114,12 @@
       <Filter>Файлы ресурсов\commands\abstract</Filter>
     </ClCompile>
     <ClCompile Include="RenameTableCommand.cpp">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateTableCommand.cpp">
+      <Filter>Файлы ресурсов\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="ShowTableCommand.cpp">
       <Filter>Файлы ресурсов\commands</Filter>
     </ClCompile>
   </ItemGroup>

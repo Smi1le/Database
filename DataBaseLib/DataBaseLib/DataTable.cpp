@@ -38,7 +38,7 @@ void CDataTable::RenameColumn(std::string const & columnName, std::string const 
 	}
 	auto column = m_columnNames.at(columnName);
 	m_columnNames.erase(columnName);
-	m_columnNames.insert(std::pair<std::string, SColumn>(newColumnName, column));
+	m_columnNames.emplace(std::pair<std::string, SColumn>(newColumnName, column));
 }
 
 void CDataTable::AddNote(CNote const &note)
@@ -53,7 +53,7 @@ void CDataTable::AddEmptyColumn(std::string const & columnName, std::string cons
 		return;
 	}
 	auto position = columnName.size();
-	m_columnNames.insert(std::pair <std::string, SColumn>(columnName, SColumn(position, type)));
+	m_columnNames.emplace(std::pair<std::string, SColumn>(columnName, SColumn(position, type)));
 
 	for (auto & note : m_table)
 	{
@@ -63,7 +63,7 @@ void CDataTable::AddEmptyColumn(std::string const & columnName, std::string cons
 
 CNote CDataTable::GetNote(size_t row) const
 {
-	return m_table.at(row);
+	return m_table[row];
 }
 
 
@@ -77,23 +77,19 @@ void CDataTable::AddColumnsNames(std::vector<Column> const & columns)
 	for (size_t i = 0; i != columns.size(); ++i)
 	{
 		auto column = columns[i];
-		m_columnNames.insert(std::pair<std::string, SColumn>(column.first, SColumn(i, column.second)));
+		m_columnNames.emplace(std::pair<std::string, SColumn>(column.first, SColumn(i, column.second)));
 	}
 }
 
-void CDataTable::Show()
+
+size_t CDataTable::GetNotesCount() const
 {
-	for (auto const &el : m_columnNames)
-	{
-		std::cout << "el = " << el.first << " : " << el.second.id << ", " << el.second.type << std::endl;
-	}
+	return m_table.size();
+}
 
-
-	for (size_t i = 0; i != m_table.size(); ++i)
-	{
-		m_table[i].Show();
-	}
-	std::cout << "\n\n\n";
+size_t CDataTable::GetColumnCount() const
+{
+	return m_columnNames.size();
 }
 
 std::string CDataTable::GetName() const
