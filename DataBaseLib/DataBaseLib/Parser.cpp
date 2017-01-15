@@ -8,6 +8,29 @@
 #include <fstream>
 
 #include "Note.h"
+#include "Types.h"
+
+namespace
+{
+	bool CheckTypes(std::vector<std::string> const &typesList)
+	{
+		size_t innerCount = 0;
+		for (size_t i = 0; i != typesList.size(); ++i)
+		{
+			if (Types::Bool == typesList[i] || Types::String == typesList[i] ||
+				Types::Double == typesList[i] || Types::Null == typesList[i])
+			{
+				++innerCount;
+			}
+			else
+			{
+				break;
+			}
+			
+		}
+		return innerCount == typesList.size();
+	}
+}
 
 using namespace std;
 using Table = std::vector<std::vector<std::string>>;
@@ -19,6 +42,13 @@ namespace
 	{
 		CDataTable newTable(tableName);
 		vector<std::pair<string, string>> infos;
+
+		if (table[0].size() != table[1].size())
+			throw std::invalid_argument("number of names mismatch column with the number of types");
+		else if (!CheckTypes(table[1]))
+			throw std::invalid_argument("They were used the wrong type");
+
+
 		for (size_t k = 0; k != table[0].size(); ++k)
 		{
 			infos.push_back(std::pair<std::string, std::string>(table[0][k], table[1][k]));
@@ -46,18 +76,24 @@ namespace
 
 CDataTable CParser::Parse(std::string const & fileName)
 {
-	
-	std::vector<string> listDatabaseFiles = GetContentsFile(fileName);
-	
-	auto newDT = GetNewDataTable(listDatabaseFiles);
-	//lib->AddTable(listDatabaseFiles[0], listDatabaseFiles[1]);
-	for (auto const &el : listDatabaseFiles)
+	try
 	{
-		std::cout << "el = " << el << std::endl << std::endl;
+		std::vector<string> listDatabaseFiles = GetContentsFile(fileName);
+
+		auto newDT = GetNewDataTable(listDatabaseFiles);
+		//lib->AddTable(listDatabaseFiles[0], listDatabaseFiles[1]);
+		/*for (auto const &el : listDatabaseFiles)
+		{
+			std::cout << "el = " << el << std::endl << std::endl;
+		}
+		std::cout << "Table name = " << newDT.GetName() << std::endl;
+		newDT.Show();*/
+		return newDT;
 	}
-	std::cout << "Table name = " << newDT.GetName() << std::endl;
-	newDT.Show();
-	return newDT;
+	catch (...)
+	{
+		throw;
+	}
 }
 
 std::vector<string> CParser::GetContentsFile(std::string const & fileName)
@@ -80,30 +116,31 @@ std::vector<string> CParser::GetContentsFile(std::string const & fileName)
 
 CDataTable CParser::GetNewDataTable(std::vector<std::string> const & tableInfo)
 {
-	std::string tableName;
-	Table table;
-	
-	for (size_t i = 0; i != tableInfo.size(); ++i)
+	try
 	{
-		if (i == 0)
+		std::string tableName;
+		Table table;
+		for (size_t i = 0; i != tableInfo.size(); ++i)
 		{
-			tableName = tableInfo[i];
-			continue;
-		}
-		
-		vector<string> listValues;
-		boost::split(listValues, tableInfo[i], boost::is_any_of(":"));
-		table.insert(table.end(), listValues);
-		/*if (i == 1)
-		{
-			std::vector<Column> columnsNames;
-			for (size_t innerCount = 0; innerCount != table[1].size(); ++innerCount)
+			vector<string> listValues;
+			boost::split(listValues, tableInfo[i], boost::is_any_of(":"));
+			if (i == 0)
 			{
-				columnsNames.push_back(Column(table[1][innerCount], "gavno"));
+				if (listValues.size() == 1)
+					tableName = tableInfo[i];
+				else
+					throw std::invalid_argument("Имя таблицы не было найдено");
 			}
-			lib->AddTable(tableName, columnsNames);
-		}*/
-	}
+			else
+			{
+				table.insert(table.end(), listValues);
+			}
+		}
 
-	return ConvertToNormForm(table, tableName);
+		return ConvertToNormForm(table, tableName);
+	}
+	catch (...)
+	{
+		throw;
+	}
 }
