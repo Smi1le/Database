@@ -14,7 +14,7 @@ void CAbstractMetaCommand::Execute()
 	{
 		if (inputStr == "break")
 		{
-			return;
+			break;
 		}
 		DoExecute(inputStr);
 	}

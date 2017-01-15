@@ -14,6 +14,6 @@ protected:
 	void SetDelimeter(std::string const & delimeter);
 
 	std::string m_delimeter;
-	CDataBaseLib m_lib;
+	CDataBaseLib &m_lib;
 };
 

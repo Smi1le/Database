@@ -31,10 +31,10 @@ void CDataBaseLib::AddTable(std::string const & tableName, std::vector<Column> c
 	{
 		auto column = columns[index];
 		SColumn col(index, column.second);
-		columNames.insert(std::pair<std::string, SColumn>(column.first, col));
+		columNames.emplace(std::pair<std::string, SColumn>(column.first, col));
 	}
 	CDataTable table(tableName, columNames);
-	m_tables.emplace(tableName, table);
+	m_tables.emplace(std::pair<std::string, CDataTable>(tableName, table));
 	std::cout << "Table created" << std::endl;
 }
 
