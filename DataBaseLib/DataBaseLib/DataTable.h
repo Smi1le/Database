@@ -35,7 +35,6 @@ public:
 
 	void SetName(std::string const & name);
 	std::string GetName() const;
-	void Show();
 
 	size_t GetNotesCount() const;
 	size_t GetColumnCount() const;
