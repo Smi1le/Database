@@ -4,7 +4,14 @@
 
 void CNote::AddColumn(size_t idColumn, CValue const & value)
 {
-	m_note.insert(std::pair<size_t, CValue>(idColumn, value));
+	try
+	{
+		m_note.insert(std::pair<size_t, CValue>(idColumn, value));
+	}
+	catch (...)
+	{
+		throw;
+	}
 }
 
 void CNote::RemoveNote()
@@ -14,12 +21,32 @@ void CNote::RemoveNote()
 
 void CNote::RemoveColumn(size_t columnId)
 {
-	m_note.erase(columnId);
+	try
+	{
+		m_note.at(columnId).ReplaceValue("null");
+	}
+	catch (...)
+	{
+		throw;
+	}
+	
+}
+
+size_t CNote::GetSize() const
+{
+	return m_note.size();
 }
 
 void CNote::UpdateNote(size_t column, std::string const & value)
 {
-	m_note.at(column).ReplaceValue(value);
+	try
+	{
+		m_note.at(column).ReplaceValue(value);
+	}
+	catch (std::out_of_range &ex)
+	{
+		throw ex;
+	}
 }
 
 void CNote::Show()
@@ -32,5 +59,13 @@ void CNote::Show()
 
 CValue CNote::GetColumnValue(size_t column) const
 {
-	return m_note.at(column);
+	try
+	{
+		return m_note.at(column);
+	}
+	catch (std::out_of_range &ex)
+	{
+		throw ex;
+	}
+	
 }
