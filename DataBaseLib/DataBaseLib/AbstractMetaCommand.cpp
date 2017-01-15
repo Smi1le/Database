@@ -18,5 +18,6 @@ void CAbstractMetaCommand::Execute()
 		}
 		DoExecute(inputStr);
 	}
+	Run();
 }
 

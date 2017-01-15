@@ -152,6 +152,7 @@
     <ClInclude Include="AbstractCommand.h" />
     <ClInclude Include="AbstractMetaCommand.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="CreateTableCommand.h" />
     <ClInclude Include="DataBaseLib.h" />
     <ClInclude Include="DataTable.h" />
     <ClInclude Include="ICommand.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Parser.h" />
     <ClInclude Include="RemoveTableCommand.h" />
     <ClInclude Include="RenameTableCommand.h" />
+    <ClInclude Include="ShowTableCommand.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Types.h" />
@@ -169,6 +171,7 @@
     <ClCompile Include="AbstractCommand.cpp" />
     <ClCompile Include="AbstractMetaCommand.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="CreateTableCommand.cpp" />
     <ClCompile Include="DataBaseLib.cpp" />
     <ClCompile Include="DataTable.cpp" />
     <ClCompile Include="LoadTablesCommand.cpp" />
@@ -177,6 +180,7 @@
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="RemoveTableCommand.cpp" />
     <ClCompile Include="RenameTableCommand.cpp" />
+    <ClCompile Include="ShowTableCommand.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

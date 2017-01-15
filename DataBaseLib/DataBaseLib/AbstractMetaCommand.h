@@ -9,6 +9,7 @@ public:
 	virtual ~CAbstractMetaCommand() = default;
 
 	void Execute() override;
-	
+protected:
+	virtual void Run() = 0;
 };
 

@@ -63,7 +63,7 @@ void CDataTable::AddEmptyColumn(std::string const & columnName, std::string cons
 
 CNote CDataTable::GetNote(size_t row) const
 {
-	return m_table.at(row);
+	return m_table[row];
 }
 
 
@@ -94,6 +94,16 @@ void CDataTable::Show()
 		m_table[i].Show();
 	}
 	std::cout << "\n\n\n";
+}
+
+size_t CDataTable::GetNotesCount() const
+{
+	return m_table.size();
+}
+
+size_t CDataTable::GetColumnCount() const
+{
+	return m_columnNames.size();
 }
 
 std::string CDataTable::GetName() const

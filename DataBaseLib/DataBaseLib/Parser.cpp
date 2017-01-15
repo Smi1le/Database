@@ -50,13 +50,8 @@ CDataTable CParser::Parse(std::string const & fileName)
 	std::vector<string> listDatabaseFiles = GetContentsFile(fileName);
 	
 	auto newDT = GetNewDataTable(listDatabaseFiles);
-	//lib->AddTable(listDatabaseFiles[0], listDatabaseFiles[1]);
-	for (auto const &el : listDatabaseFiles)
-	{
-		std::cout << "el = " << el << std::endl << std::endl;
-	}
+
 	std::cout << "Table name = " << newDT.GetName() << std::endl;
-	newDT.Show();
 	return newDT;
 }
 

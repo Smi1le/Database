@@ -7,7 +7,7 @@ void CDataBaseLib::LoadTableFromFile(std::string const & data)
 {
 	CParser parser;
 	auto table = parser.Parse(data);
-	m_tables.insert(std::pair<std::string, CDataTable>(table.GetName(), table));
+	m_tables.emplace(table.GetName(), table);
 }
 
 void CDataBaseLib::LoadTablesFromFiles(std::vector<std::string> const & paths)
@@ -34,11 +34,12 @@ void CDataBaseLib::AddTable(std::string const & tableName, std::vector<Column> c
 		columNames.insert(std::pair<std::string, SColumn>(column.first, col));
 	}
 	CDataTable table(tableName, columNames);
+	m_tables.emplace(tableName, table);
 }
 
-CDataTable CDataBaseLib::GetTable(std::string const & tableName) const
+CDataTable CDataBaseLib::GetTable(std::string const & tableName)
 {
-	return m_tables.at(tableName);
+	return m_tables[tableName];
 }
 
 void CDataBaseLib::RenameTable(std::string const & tableName, std::string const & newTableName)
@@ -48,8 +49,8 @@ void CDataBaseLib::RenameTable(std::string const & tableName, std::string const 
 		std::cout << "This name exist" << std::endl;
 		return;
 	}
-	auto table = m_tables.at(tableName);
+	auto table = m_tables[tableName];
 	table.SetName(newTableName);
 	m_tables.erase(tableName);
-	m_tables.insert(std::pair<std::string, CDataTable>(newTableName, table));
+	m_tables.emplace(newTableName, table);
 }
