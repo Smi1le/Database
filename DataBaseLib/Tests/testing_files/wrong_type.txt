@@ -1,0 +1,6 @@
+My_table
+id_note:computer:comput:password:login
+string:string:string:string:babushka
+1:asus:Vasya:qwerty123:Vasya_ya
+2:lenovo:Kolya:wwwwww:Kolyanchik
+3:lenovo:Kolya:rtrtfdf:mamamiya
