@@ -23,11 +23,11 @@ void CNote::RemoveColumn(size_t columnId)
 {
 	try
 	{
-		m_note.at(columnId).ReplaceValue("null");
+		m_note.erase(columnId);
 	}
 	catch (...)
 	{
-		throw;
+		throw std::runtime_error("failed to remove column");
 	}
 	
 }

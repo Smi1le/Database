@@ -4,8 +4,7 @@
 class CValue
 {
 public:
-	CValue() = default;
-	CValue(std::string const & value);
+	CValue(std::string const & value = "null");
 	void ReplaceValue(std::string const & value);
 	void RemoveValue();
 	std::string GetValue() const;

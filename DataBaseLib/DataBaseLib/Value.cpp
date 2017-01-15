@@ -4,13 +4,28 @@
 
 
 CValue::CValue(std::string const & value)
-	: m_value(value)
 {
+	try
+	{
+		m_value = value;
+	}
+	catch (...)
+	{
+		m_value = "null";
+	}
 }
 
 void CValue::ReplaceValue(std::string const & value)
 {
-	m_value = value;
+	try
+	{
+		m_value = value;
+	}
+	catch (...)
+	{
+		throw;
+	}
+	
 }
 
 void CValue::RemoveValue()

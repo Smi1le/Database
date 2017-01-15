@@ -16,6 +16,25 @@ using Table = std::vector<std::vector<std::string>>;
 
 namespace
 {
+	bool CheckTypes(std::vector<std::string> const &typesList)
+	{
+		size_t innerCount = 0;
+		for (size_t i = 0; i != typesList.size(); ++i)
+		{
+			if (Types::Bool == typesList[i] || Types::String == typesList[i] ||
+				Types::Double == typesList[i] || Types::Null == typesList[i])
+			{
+				++innerCount;
+			}
+			else
+			{
+				break;
+			}
+
+		}
+		return innerCount == typesList.size();
+	}
+
 	CDataTable ConvertToNormForm(Table const &table, std::string const &tableName)
 	{
 		CDataTable newTable(tableName);
@@ -49,25 +68,6 @@ namespace
 
 
 		return newTable;
-	}
-
-	bool CheckTypes(std::vector<std::string> const &typesList)
-	{
-		size_t innerCount = 0;
-		for (size_t i = 0; i != typesList.size(); ++i)
-		{
-			if (Types::Bool == typesList[i] || Types::String == typesList[i] ||
-				Types::Double == typesList[i] || Types::Null == typesList[i])
-			{
-				++innerCount;
-			}
-			else
-			{
-				break;
-			}
-
-		}
-		return innerCount == typesList.size();
 	}
 }
 
